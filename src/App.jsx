@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Routes, Route, Link } from "react-router-dom";
 import reactLogo from './assets/react.svg'
 import { List } from './components/List'
 import './App.css'
@@ -9,8 +10,11 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1>Pizza Service - Usersnack</h1>
-        <List />
+      <h1>Pizza Service - Usersnack</h1>
+      <Routes>
+        <Route path="/" element={<List />} />
+        {/* <Route path="about" element={<About />} /> */}
+      </Routes>
       </div>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
