@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route, Link } from "react-router-dom";
 import reactLogo from './assets/react.svg'
 import { List } from './components/List'
+import { PizzaDetails } from './components/PizzaDetails';
 import './App.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <h1>Pizza Service - Usersnack</h1>
       <Routes>
         <Route path="/" element={<List />} />
+        <Route path="pizzas/:id" element={<PizzaDetails />} />
         {/* <Route path="about" element={<About />} /> */}
       </Routes>
       </div>

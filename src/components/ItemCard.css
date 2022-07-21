@@ -16,12 +16,13 @@
 .card:hover {
     background-color: #3a21ce;
     color: white;
+    cursor: pointer;
 }
 
-.details {
+.card-details {
     flex-grow: 1;
 }
 
-.price {
+.card-price {
     padding-top: 60px;
 }
