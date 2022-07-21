@@ -1,9 +1,27 @@
 .card {
+    display: flex;
     border: 2px solid #535bf2;
     margin: 2rem;
     border-radius: 4px;
+    flex-direction: row;
+    text-align: left;
+
+}
+
+@media screen and (max-width:999px) {
+    .card {
+        flex-direction: column;
+    }
 }
 .card:hover {
     background-color: #3a21ce;
     color: white;
+}
+
+.details {
+    flex-grow: 1;
+}
+
+.price {
+    padding-top: 60px;
 }
