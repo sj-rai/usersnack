@@ -1,0 +1,10 @@
+.details-container {
+    /* display: flex; */
+    border: 2px solid #535bf2;
+    margin: 2em;
+    padding: 2em;
+    border-radius: 4px;
+    flex-direction: row;
+    text-align: left;
+
+}

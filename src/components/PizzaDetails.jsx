@@ -1,4 +1,5 @@
 import { useParams, useLocation } from "react-router-dom"
+import './PizzaDetails.css'
 
 export function PizzaDetails() {
     const { state } = useLocation();
@@ -8,14 +9,13 @@ export function PizzaDetails() {
     if(!state) {
         return(
             <h1>
-                {params.id}
+                {params.id} Not Found
             </h1>
         )
     } else {
         const {name, price, ingredients, img} = state;
-        console.log('[img]', img)
         return(
-            <>
+            <div className="details-container">
                 <div className="details">
                     <h2>{name}</h2>
                     {ingredients && ingredients.map((ingredient) => {
@@ -32,7 +32,7 @@ export function PizzaDetails() {
                 <div className="image">
                     <img src={`../../data/img/${img}`}/>
                 </div>
-            </>
+            </div>
         )
     }
 }
