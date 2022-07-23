@@ -4,7 +4,47 @@
     margin: 2em;
     padding: 2em;
     border-radius: 4px;
-    flex-direction: row;
+    /* flex-direction: column; */
     text-align: left;
+}
 
+.details {
+    display: flex;
+}
+
+.details-content {
+    flex: 1 1 400px;
+}
+
+.order {
+    border-top: 1px solid #535bf2;
+    padding-top: 1em;
+    margin-top: 1em;
+}
+
+.extras-tag {
+    display: inline;
+    flex-direction: row;
+    padding: 0.2em 1em;
+    margin-bottom: 0.3em;
+    margin-right: 0.1em;
+    border-radius: 18px;
+    background: #d0d2ff;
+    width: max-content;
+}
+
+.delete-tag {
+    background-color: unset;
+    cursor: pointer;
+    padding: 0.2em 0.2em;
+    border: unset;
+    margin-left: 4px;
+}
+
+.delete-tag:hover {
+    background: none;
+}
+
+.extras {
+    margin-bottom: 1em;
 }

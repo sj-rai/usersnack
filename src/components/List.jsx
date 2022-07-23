@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from "react"
 import { ItemCard } from "./ItemCard"
 
+export const ExtrasContext = React.createContext();
+
 export function List() {
     const [pizzaList, setPizzaList] = useState([])
+    const [extras, setExtras] = useState([])
 
     useEffect(() => {
         fetchData().then((data) => {
             console.log('[data]', data)
             setPizzaList(data.data.Pizza)
+            setExtras(data.data.Extras)
         }).catch((err) => {
             console.log('[err]', err)
         })
     }, [])
 
     return (
-        <ul>
-        {pizzaList && pizzaList.map((item, key) => {
-            return (<li key={key}>
-                        <ItemCard>{item}</ItemCard>
-                    </li>)
-            })}
-        </ul>
+        <ExtrasContext.Provider value={extras?extras:''}>
+            <ul>
+            {pizzaList && pizzaList.map((item, key) => {
+                return (<li key={key}>
+                            <ItemCard>{item}</ItemCard>
+                        </li>)
+                })}
+            </ul>
+        </ExtrasContext.Provider>
     )
 }
 
