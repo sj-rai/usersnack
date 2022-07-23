@@ -127,9 +127,9 @@ export function PizzaDetails() {
                     </div>
                     <div className="order-form">
                         <form onSubmit={handleSubmit}>
-                            <input ref={nameRef} type="text" placeholder="Name"/>
-                            <textarea ref ={addressRef} placeholder="Address"/>
-                            <input ref={emailRef} type="text" placeholder="Email"/>
+                            <input required ref={nameRef} type="text" placeholder="Name"/>
+                            <textarea required ref ={addressRef} placeholder="Address"/>
+                            <input required ref={emailRef} type="text" placeholder="Email"/>
                             <button className="order-button">Order</button>
                         </form>
                     </div>
