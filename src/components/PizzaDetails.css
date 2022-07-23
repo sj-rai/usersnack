@@ -17,6 +17,7 @@
 }
 
 .order {
+    display: flex;
     border-top: 1px solid #535bf2;
     padding-top: 1em;
     margin-top: 1em;
@@ -47,4 +48,21 @@
 
 .extras {
     margin-bottom: 1em;
+}
+
+.order-form {
+    margin-left: 1.5em;
+    text-align: center;
+    flex: 1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.order-button {
+    margin-right: 0.7em;
+    margin-top: 0.5em;
 }

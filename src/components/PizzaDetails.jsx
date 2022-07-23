@@ -91,27 +91,37 @@ export function PizzaDetails() {
                     </div>
                 </div>
                 <div className="order">
-                    <h2>Order Now</h2>
-                    <b>Please Select Multiple Extras</b>
-                    <select onChange={(e) => setExtraSelected(e.target.value)} name="extras">
-                        {extras.map((extra) => {
-                            return (<option key={extra.name} value={extra.name}>{extra.name} (+ USD {extra.price})</option>)
-                        })}
-                    </select>
-                    <button onClick={() => addExtra()}>add</button>
-                    <div className="extras">
-                        {extrasAdded.map((extraAdded) => {
-                            console.log('[extraAdded]', extraAdded)
-                            return (
-                            <div key={extraAdded} className="extras-tag">
-                                {extraAdded}
-                                <button className="delete-tag" onClick={() => deleteTag(extraAdded)}>x</button>
-                            </div>
-                            )
-                        })}
-                    </div>
                     <div>
-                        <h3>Total Price: {total}</h3>
+                        <h2>Order Now</h2>
+                        <b>Please Select Multiple Extras</b>
+                        <select onChange={(e) => setExtraSelected(e.target.value)} name="extras">
+                            {extras.map((extra) => {
+                                return (<option key={extra.name} value={extra.name}>{extra.name} (+ USD {extra.price})</option>)
+                            })}
+                        </select>
+                        <button onClick={() => addExtra()}>add</button>
+                        <div className="extras">
+                            {extrasAdded.map((extraAdded) => {
+                                console.log('[extraAdded]', extraAdded)
+                                return (
+                                <div key={extraAdded} className="extras-tag">
+                                    {extraAdded}
+                                    <button className="delete-tag" onClick={() => deleteTag(extraAdded)}>x</button>
+                                </div>
+                                )
+                            })}
+                        </div>
+                        <div>
+                            <h3>Total Price: {total}</h3>
+                        </div>
+                    </div>
+                    <div className="order-form">
+                        <form onSubmit={(e) => {e.preventDefault; alert('ordered');}}>
+                            <input type="text" placeholder="Name"/>
+                            <textarea placeholder="Address"/>
+                            <input type="text" placeholder="Email"/>
+                            <button className="order-button">Order</button>
+                        </form>
                     </div>
                 </div>
             </div>
