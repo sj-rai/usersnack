@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom"
 import './PizzaDetails.css'
 
@@ -6,6 +6,10 @@ export function PizzaDetails() {
     const [extrasAdded, setExtrasAdded] = useState([])
     const [extraSelected, setExtraSelected] = useState('');
     const [total, setTotal] = useState(0);
+
+    const nameRef = useRef();
+    const addressRef = useRef();
+    const emailRef  = useRef();
 
     const { state } = useLocation();
     const params = useParams()
@@ -57,6 +61,12 @@ export function PizzaDetails() {
             calculateTotal(item, 'remove')
         }
         setExtrasAdded(newList)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        console.log('[handleSubmit]', nameRef.current.value, addressRef.current.value, emailRef.current.value)
+        alert(`Total Price USD ${total}, Ordered ${name} with ${extrasAdded} `)
     }
 
     // if no state is found, like entered url without navigating, use params
@@ -116,10 +126,10 @@ export function PizzaDetails() {
                         </div>
                     </div>
                     <div className="order-form">
-                        <form onSubmit={(e) => {e.preventDefault; alert('ordered');}}>
-                            <input type="text" placeholder="Name"/>
-                            <textarea placeholder="Address"/>
-                            <input type="text" placeholder="Email"/>
+                        <form onSubmit={handleSubmit}>
+                            <input ref={nameRef} type="text" placeholder="Name"/>
+                            <textarea ref ={addressRef} placeholder="Address"/>
+                            <input ref={emailRef} type="text" placeholder="Email"/>
                             <button className="order-button">Order</button>
                         </form>
                     </div>
