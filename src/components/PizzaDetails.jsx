@@ -49,6 +49,7 @@ export function PizzaDetails() {
                 }
             }
         })
+        console.log('[total]', total)
     }
 
     function deleteTag(item) {
@@ -66,7 +67,7 @@ export function PizzaDetails() {
     function handleSubmit(e) {
         e.preventDefault()
         console.log('[handleSubmit]', nameRef.current.value, addressRef.current.value, emailRef.current.value)
-        alert(`Total Price USD ${total}, Ordered ${name} with ${extrasAdded} `)
+        alert(`Total Price USD ${total.toFixed(2)}, Ordered ${name} with ${extrasAdded} `)
     }
 
     // if no state is found, like entered url without navigating, use params
@@ -93,7 +94,7 @@ export function PizzaDetails() {
                             }
                         })}
                         <div className="price">
-                            <h3>USD {price}</h3>
+                            <h3>USD {price.toFixed(2)}</h3>
                         </div>
                     </div>
                     <div className="details-image">
@@ -122,7 +123,7 @@ export function PizzaDetails() {
                             })}
                         </div>
                         <div>
-                            <h3>Total Price: {total}</h3>
+                            <h3>Total Price: USD {total.toFixed(2)}</h3>
                         </div>
                     </div>
                     <div className="order-form">

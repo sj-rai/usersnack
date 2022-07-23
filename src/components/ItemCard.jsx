@@ -27,7 +27,7 @@ export function ItemCard({children}) {
                     }
                 })}
                 <div className="card-price">
-                    <h3>USD {price}</h3>
+                    <h3>USD {price.toFixed(2)}</h3>
                 </div>
             </div>
             <div className="card-image">
