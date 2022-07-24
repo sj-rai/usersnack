@@ -8,6 +8,7 @@
     text-align: left;
 }
 
+
 .details {
     display: flex;
 }
@@ -24,7 +25,7 @@
 }
 
 .extras-tag {
-    display: inline;
+    display: inline-block;;
     flex-direction: row;
     padding: 0.2em 1em;
     margin-bottom: 0.3em;
@@ -67,4 +68,22 @@ form {
 .order-button {
     margin-right: 0.7em;
     margin-top: 0.5em;
+}
+
+@media screen and (max-width:999px) {
+    .details {
+        flex-direction: column;
+    }
+    .details-content {
+        flex: unset;
+    }
+    .order {
+        flex-direction: column;
+    }
+    .extras {
+        margin-top: 1em;
+    }
+    .extras-tag {
+        margin-top: 0.1em;
+    }
 }
