@@ -1,6 +1,6 @@
 .details-container {
     /* display: flex; */
-    border: 2px solid #535bf2;
+    border: 2px solid var(--primary-color);
     margin: 2em;
     padding: 2em;
     border-radius: 4px;
@@ -18,7 +18,7 @@
 
 .order {
     display: flex;
-    border-top: 1px solid #535bf2;
+    border-top: 1px solid var(--primary-color);
     padding-top: 1em;
     margin-top: 1em;
 }
@@ -31,6 +31,7 @@
     margin-right: 0.1em;
     border-radius: 18px;
     background: #d0d2ff;
+    color: var(--background-color-page);
     width: max-content;
 }
 
@@ -40,6 +41,7 @@
     padding: 0.2em 0.2em;
     border: unset;
     margin-left: 4px;
+    color: var(--background-color-page);
 }
 
 .delete-tag:hover {

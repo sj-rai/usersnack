@@ -1,12 +1,18 @@
 :root {
+
+  --primary-color: #646cff;
+  --secondary-color: #ffffffe0;
+  --background-color-page: #2b2b2b;
+  --background-color-element: #3a21ce;
+
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--secondary-color);
+  background-color: var(--background-color-page);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,11 +23,8 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--primary-color);
   text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
 }
 
 body {
@@ -49,7 +52,7 @@ h3 {
 
 button {
   border-radius: 8px;
-  border: 1px solid #646cff;
+  border: 1px solid var(--primary-color);
   padding: 0.38em 1em;
   font-size: 1em;
   /* font-weight: 500; */
@@ -59,7 +62,7 @@ button {
   /* transition: border-color 0.25s; */
 }
 button:hover {
-  background: #3a21ce;
+  background: var(--background-color-element);
   color: white;
 }
 /* button:focus,
@@ -89,7 +92,7 @@ select {
   margin: 20px;
   padding: 5px 35px 5px 5px;
   font-size: 1em;
-  border: 1px solid #646cff;
+  border: 1px solid var(--primary-color);
   border-radius: 8px;
   height: 34px;
   cursor: pointer;
@@ -103,7 +106,7 @@ input[type=text] {
   margin: 10px;
   padding: 5px 5px 5px 5px;
   font-size: 1em;
-  border: 1px solid #646cff;
+  border: 1px solid var(--primary-color);
   border-radius: 8px;
   height: 22px;
   width: 390px;
@@ -114,7 +117,7 @@ textarea {
   margin: 10px;
   padding: 5px 5px 5px 5px;
   font-size: 1em;
-  border: 1px solid #646cff;
+  border: 1px solid var(--primary-color);
   border-radius: 8px;
   height: 120px;
   width: 390px;
