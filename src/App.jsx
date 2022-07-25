@@ -14,7 +14,7 @@ function App() {
       <h1>Pizza Service - Usersnack</h1>
       <Routes>
         <Route path="/" element={<List />} />
-        <Route path="pizzas/:id" element={<PizzaDetails />} />
+        <Route path="/pizzas/:id" element={<PizzaDetails />} />
         {/* <Route path="about" element={<About />} /> */}
       </Routes>
       </div>
