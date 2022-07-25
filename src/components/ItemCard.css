@@ -11,6 +11,10 @@
 @media screen and (max-width:999px) {
     .card {
         flex-direction: column;
+        margin: 0.2em;
+    }
+    img {
+        width: 12em;
     }
 }
 .card:hover {

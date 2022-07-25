@@ -122,3 +122,21 @@ textarea {
   height: 120px;
   width: 390px;
 }
+
+@media screen and (max-width: 999px) {
+  select {
+    margin: 10px;
+    width: 10em;
+  }
+  button {
+    margin: 10px;
+  }
+  input[type=text] {
+    margin: 10px;
+    width: 10em;
+  }
+  textarea {
+    margin: 10px;
+    width: 10em;
+  }
+}
