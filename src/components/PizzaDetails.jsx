@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom"
 import './PizzaDetails.css'
+import { fetchData } from './List'
 
 export function PizzaDetails() {
     const [extrasAdded, setExtrasAdded] = useState([])
     const [extraSelected, setExtraSelected] = useState('');
     const [total, setTotal] = useState(0);
+    const [pizzaSelected, setPizzaSelected] = useState({})
+    const [allExtras, setAllExtras] = useState([])
 
     const nameRef = useRef();
     const addressRef = useRef();
@@ -14,15 +17,36 @@ export function PizzaDetails() {
     const { state } = useLocation();
     const params = useParams()
 
-    const {pizza, extras} = state;
-    const {name, price, ingredients, img} = pizza;
+    let {pizza, extras} = state || '';
+    // let {name, price, ingredients, img} = pizza || '';
 
     useEffect(() => {
         if(!state) {
             // get data
+            let path = '../../data/data.json';
+            fetchData(path).then((data) => {
+                console.log('[data]', data)
+                let pizzas = data.data.Pizza;
+                extras = data.data.Extras;
+                console.log('[pizzas]', pizzas)
+                for(let pizzaInArray of pizzas) {
+                    console.log('[pizzaInArray]', pizzaInArray)
+                    if(pizzaInArray.id === parseInt(params.id)) {
+                        setPizzaSelected(pizzaInArray)
+                        break;
+                    }
+                }
+                setAllExtras(extras)
+                setExtraSelected(extras[0].name)
+                setTotal(price)
+            }).catch((err) => {
+                console.log('[err]', err)
+            })
         } else {
+            setAllExtras(extras)
+            setPizzaSelected(pizza);
             setExtraSelected(extras[0].name)
-            setTotal(price)
+            setTotal(pizza.price)
         }
     }, [])
     
@@ -71,34 +95,31 @@ export function PizzaDetails() {
     }
 
     // if no state is found, like entered url without navigating, use params
-    if(!state) {
+    if(!pizzaSelected.id) {
         return(
             <h1>
                 {params.id} Not Found
             </h1>
         )
     } else {
-        // const {pizza, extras} = state;
-        console.log('[extras]', extras)
-        // const {name, price, ingredients, img} = pizza;
         return(
             <div className="details-container">
                 <div className="details">
                     <div className="details-content">
-                        <h2>{name}</h2>
-                        {ingredients && ingredients.map((ingredient) => {
-                            if(ingredients.indexOf(ingredient) === 0) {
+                        <h2>{pizzaSelected.name}</h2>
+                        {pizzaSelected.ingredients && pizzaSelected.ingredients.map((ingredient) => {
+                            if(pizzaSelected.ingredients.indexOf(ingredient) === 0) {
                                 return <span key={ingredient}>{ingredient}</span>
                             } else {
                                 return <span key={ingredient}>, {ingredient}</span>
                             }
                         })}
                         <div className="price">
-                            <h3>USD {price.toFixed(2)}</h3>
+                            <h3>USD {pizzaSelected.price && pizzaSelected.price.toFixed(2)}</h3>
                         </div>
                     </div>
                     <div className="details-image">
-                        <img src={`../../data/img/${img}`}/>
+                        <img src={`../../data/img/${pizzaSelected.img}`}/>
                     </div>
                 </div>
                 <div className="order">
@@ -106,7 +127,7 @@ export function PizzaDetails() {
                         <h2>Order Now</h2>
                         <b>Please Select Multiple Extras</b>
                         <select onChange={(e) => setExtraSelected(e.target.value)} name="extras">
-                            {extras.map((extra) => {
+                            {allExtras && allExtras.map((extra) => {
                                 return (<option key={extra.name} value={extra.name}>{extra.name} (+ USD {extra.price})</option>)
                             })}
                         </select>

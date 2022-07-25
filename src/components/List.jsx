@@ -8,7 +8,8 @@ export function List() {
     const [extras, setExtras] = useState([])
 
     useEffect(() => {
-        fetchData().then((data) => {
+        let path = 'data/data.json';
+        fetchData(path).then((data) => {
             console.log('[data]', data)
             setPizzaList(data.data.Pizza)
             setExtras(data.data.Extras)
@@ -30,9 +31,9 @@ export function List() {
     )
 }
 
-function fetchData() {
+export function fetchData(path) {
     return new Promise((resolve, reject) => {
-        return fetch('data/data.json').then((response) => {
+        return fetch(path).then((response) => {
             console.log('[response]', response)
             if (!response.ok) {
                 throw Error(response.statusText);
@@ -42,6 +43,7 @@ function fetchData() {
             console.log("[data]", data)
             resolve({data: data})
         }).catch(err => {
+            console.log('[err]', err)
             reject(err);
         });
     })
